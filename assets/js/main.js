@@ -319,3 +319,27 @@
   }
 
 })();
+
+
+//=============================================================
+
+/**
+ * 현재 url에 따라 sidebar의 형태 변경
+ */
+
+  // 페이지 로드 시 실행되는 함수
+  document.addEventListener('DOMContentLoaded', function() {
+    // 현재 페이지의 URL을 가져옵니다.
+    var currentLocation = window.location.href;
+    // sidebar-nav 내의 모든 링크를 찾습니다.
+    document.querySelectorAll('#sidebar-nav .nav-link').forEach(function(link) {
+      // 현재 링크의 href 속성이 현재 페이지의 URL을 포함하고 있다면
+      if (currentLocation.includes(link.getAttribute('href'))) {
+        // 'collapsed' 클래스를 제거합니다.
+        link.classList.remove('collapsed');
+      } else {
+        // 현재 페이지의 URL을 포함하고 있지 않다면 'collapsed' 클래스를 추가합니다.
+        link.classList.add('collapsed');
+      }
+    });
+  });
